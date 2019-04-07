@@ -37,4 +37,13 @@ class RestController extends Controller
             return $this->jwtAuth->login($request->input('email'), $request->input('password'));
        }
     }
+    public function token(Request $request)
+    {
+       if($this->jwtAuth->checkToken($request->header('Authorization'))==false)
+        {
+            abort(401);
+        }
+       $datos= $this->jwtAuth->traducirToken($request->header('Authorization'));
+       return response()->json( $datos[0],200);
+    }
 }

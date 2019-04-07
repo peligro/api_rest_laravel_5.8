@@ -15,5 +15,6 @@ Route::get('/', function () {
     abort(404);
 });
 Route::post('api/v1/login', 'RestController@login')->name('login');
+Route::post('api/v1/token', 'RestController@token')->name('token');
 Route::resource('api/v1/categoria', 'CategoriaController');
 Route::resource('api/v1/post', 'PostController');

@@ -69,6 +69,11 @@ class Helpers {
      
       return $auth;
   }
+  public function traducirToken($token)
+  {
+    $explode=explode(' ', $token);
+    return JWT::decode($explode[1], $this->getKey(), ['HS256']);
+  }
   public function fecha($fechaBruto, $tipo='') 
     {
         $fechaArray=explode(' ', $fechaBruto);
